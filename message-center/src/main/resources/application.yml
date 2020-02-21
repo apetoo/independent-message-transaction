@@ -50,9 +50,14 @@ logging:
 dubbo:
   registry:
     address: zookeeper://192.168.37.111:2181
+    protocol: zookeeper
+  metadata-report:
+    address: zookeeper://192.168.37.111:2181
+  config-center:
+    protocol: zookeeper
   protocol:
     name: dubbo
-    port: -1
+    port: 20888
 
 server:
   port: 8081

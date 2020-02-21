@@ -19,7 +19,7 @@ public class CodeGenerator {
         //用来获取mybatis-plus.properties文件的配置信息
 //        final ResourceBundle rb = ResourceBundle.getBundle("mybatis-plus");
 
-        String projectPath = "C:\\Users\\wanmingyu\\IdeaProjects\\my\\independent-message-transaction\\message-center";
+        final String projectPath = "C:\\Users\\wanmingyu\\IdeaProjects\\my\\independent-message-transaction\\message-center";
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
