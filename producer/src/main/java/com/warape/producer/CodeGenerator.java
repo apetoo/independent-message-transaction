@@ -19,7 +19,7 @@ public class CodeGenerator {
         //用来获取mybatis-plus.properties文件的配置信息
 //        final ResourceBundle rb = ResourceBundle.getBundle("mybatis-plus");
 
-        String projectPath = "C:\\Users\\wanmingyu\\IdeaProjects\\my\\rabbitmq-transaction";
+        String projectPath = "C:\\Users\\wanmingyu\\IdeaProjects\\my\\independent-message-transaction\\producer";
         AutoGenerator mpg = new AutoGenerator();
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
@@ -52,7 +52,7 @@ public class CodeGenerator {
         });*/
 
         // 数据源配置
-        dsc.setUrl("jdbc:mysql://192.168.37.111:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai");
+        dsc.setUrl("jdbc:mysql://192.168.37.111:3306/pay?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.zaxxer.hikari.HikariDataSource");
         dsc.setUsername("root");
@@ -91,9 +91,9 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
 //        pc.setParent(rb.getString("parent"));
-        pc.setParent("com.warape.rabbitmqtransaction");
+        pc.setParent("com.warape.producer");
         // pc.setModuleName("tbldept");//模块名称，单独生成模块时使用！！！！！！！！！！！
-//        pc.setController(null);
+//        pc.setController(controller);
         pc.setService("services");
         pc.setServiceImpl("services.impl");
         pc.setEntity("entity");
@@ -124,6 +124,7 @@ public class CodeGenerator {
         // 关闭默认 xml 生成，调整生成 至 根目录
         TemplateConfig tc = new TemplateConfig();
         tc.setXml(null);
+        tc.setController(null);
         mpg.setTemplate(tc);
 
         // 执行生成

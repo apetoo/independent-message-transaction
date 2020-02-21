@@ -13,7 +13,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author wanmingyu
- * @since 2020-02-19
+ * @since 2020-02-21
  */
 public class OrderInfo extends Model<OrderInfo> {
 

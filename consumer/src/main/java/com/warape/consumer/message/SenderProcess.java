@@ -1,7 +1,6 @@
 package com.warape.consumer.message;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.warape.consumer.entity.LocalMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
@@ -19,9 +18,6 @@ public class SenderProcess implements RabbitTemplate.ReturnCallback, RabbitTempl
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
         log.info("ack:{} cause:{}", ack, cause);
         String id = correlationData.getId();
-        LocalMessage localMessage = new LocalMessage();
-        localMessage.setState(1);
-        localMessage.update(new LambdaUpdateWrapper<LocalMessage>().eq(LocalMessage::getUuid, id));
     }
 
     @Override

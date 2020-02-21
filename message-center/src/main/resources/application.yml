@@ -1,0 +1,58 @@
+spring:
+  rabbitmq:
+    ####连接地址
+    host: 192.168.37.111
+    ####端口号
+    port: 5672
+    ####账号
+    username: admin
+    ####密码
+    password: admin
+    ### 地址
+    virtual-host: /my_vhost
+    publisher-returns:  true #开启发送失败退回
+    template:
+      mandatory: true #保证监听有效
+    listener:
+      simple:
+        acknowledge-mode: manual #消费者的ack方式为手动 auto自动 none不会发送ACK（与channelTransacted=true不兼容）
+        concurrency: 1 #最小消费者数量
+        max-concurrency: 10 #最大消费者数量
+        retry:
+          ####开启消费者重试
+          enabled: true
+          ####最大重试次数
+          max-attempts: 5
+          ####重试间隔次数
+          initial-interval: 3000
+    publisher-confirm-type: correlated #会确认回调
+  datasource:
+    url: jdbc:mysql://192.168.37.111:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+  application:
+    name: message-center
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      id-type: auto # id按照有序自增
+  configuration:
+    #    驼峰
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+logging:
+  level:
+    com.blhcn.sugar.dao.mapper: debug
+dubbo:
+  registry:
+    address: zookeeper://192.168.37.111:2181
+  protocol:
+    name: dubbo
+    port: -1
+
+server:
+  port: 8081

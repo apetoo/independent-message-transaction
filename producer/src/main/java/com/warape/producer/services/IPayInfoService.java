@@ -9,9 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author wanmingyu
- * @since 2020-02-19
+ * @since 2020-02-21
  */
 public interface IPayInfoService extends IService<PayInfo> {
 
-    boolean pay(PayInfo payInfo);
 }
