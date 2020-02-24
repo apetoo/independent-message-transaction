@@ -107,6 +107,21 @@ public class ResponseResult<T> implements Serializable {
             return this;
         }
 
+        /**
+         * 失败
+         *
+         * @param commonConstants
+         * @return
+         */
+        public ResponseResult.ResponseResultBuilder<T> commonFail(CommonConstants commonConstants,T data) {
+            Integer code = commonConstants.getCode();
+            String msg = commonConstants.getMsg();
+            this.code = code;
+            this.msg = msg;
+            this.data = data;
+            return this;
+        }
+
         public ResponseResult<T> build() {
             return new ResponseResult(this.code, this.msg, this.data);
         }

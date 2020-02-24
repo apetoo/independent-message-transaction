@@ -22,6 +22,15 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.warape</groupId>
+            <artifactId>message-center-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.warape</groupId>
+            <artifactId>producer-api</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
@@ -79,10 +88,6 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.warape</groupId>
-            <artifactId>message-center-api</artifactId>
-        </dependency>
 
         <!--dubbo 依赖-->
         <dependency>
@@ -97,6 +102,12 @@
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-dependencies-zookeeper</artifactId>
             <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

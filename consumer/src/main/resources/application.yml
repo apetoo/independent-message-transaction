@@ -9,7 +9,7 @@ spring:
     ####密码
     password: admin
     ### 地址
-    virtual-host: /my_vhost
+    #    virtual-host: /
     publisher-returns:  true #开启发送失败退回
     template:
       mandatory: true #保证监听有效
@@ -26,12 +26,16 @@ spring:
           ####重试间隔次数
           initial-interval: 3000
     publisher-confirm-type: correlated #会确认回调
+    connection-timeout:
+
   datasource:
     url: jdbc:mysql://192.168.37.111:3306/order?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
+  application:
+    name: consumer
 
 mybatis-plus:
   global-config:
@@ -43,6 +47,24 @@ mybatis-plus:
     #    驼峰
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/*.xml
+
+dubbo:
+  registry:
+    address: zookeeper://192.168.37.111:2181
+    protocol: zookeeper
+    timeout: 5000
+    simplified: true
+  metadata-report:
+    address: zookeeper://192.168.37.111:2181
+    timeout: 5000
+  config-center:
+    protocol: zookeeper
+    timeout: 5000
+  protocol:
+    name: dubbo
+    port: 20880
 logging:
   level:
-    com.blhcn.sugar.dao.mapper: debug
+    com.warape.consumer.mapper: debug
+server:
+  port: 8082

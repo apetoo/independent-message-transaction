@@ -125,6 +125,8 @@ public class CodeGenerator {
         TemplateConfig tc = new TemplateConfig();
         tc.setXml(null);
         tc.setController(null);
+        tc.setService(null);
+        tc.setServiceImpl(null);
         mpg.setTemplate(tc);
 
         // 执行生成

@@ -4,7 +4,7 @@ import com.warape.producer.entity.PayInfo;
 import com.warape.producer.mapper.PayInfoMapper;
 import com.warape.producer.services.IPayInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>

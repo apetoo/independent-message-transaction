@@ -2,9 +2,9 @@ package com.warape.consumer.services.impl;
 
 import com.warape.consumer.entity.OrderInfo;
 import com.warape.consumer.mapper.OrderInfoMapper;
-import com.warape.consumer.services.IOrderInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
+import com.warape.consumer.services.IOrderInfoService;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * <p>

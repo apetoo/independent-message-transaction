@@ -4,28 +4,29 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <artifactId>consumer-api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>consumer-api</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+
     <parent>
         <artifactId>independent-message-transaction</artifactId>
         <groupId>com.warape</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.warape.commons</groupId>
-    <artifactId>commons</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
-
-    <name>commons</name>
-    <!-- FIXME change it to the project's website -->
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <groupId>com.warape.commons</groupId>
+            <artifactId>commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-extension</artifactId>
+            <version>${mybatis.plus.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

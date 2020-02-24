@@ -1,7 +1,7 @@
 package com.warape.producer.services;
 
-import com.warape.producer.entity.PayInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.warape.producer.entity.PayInfo;
 
 /**
  * <p>

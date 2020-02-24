@@ -14,6 +14,8 @@
         <module>consumer</module>
         <module>commons</module>
         <module>message-center-api</module>
+        <module>consumer-api</module>
+        <module>producer-api</module>
     </modules>
     <name>independent-message-transaction</name>
     <description>父工程</description>
@@ -132,6 +134,16 @@
             <dependency>
                 <groupId>com.warape</groupId>
                 <artifactId>message-center-api</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.warape</groupId>
+                <artifactId>consumer-api</artifactId>
+                <version>${module.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.warape</groupId>
+                <artifactId>producer-api</artifactId>
                 <version>${module.version}</version>
             </dependency>
         </dependencies>

@@ -9,8 +9,9 @@ spring:
     ####密码
     password: admin
     ### 地址
-    virtual-host: /my_vhost
+#    virtual-host: /
     publisher-returns:  true #开启发送失败退回
+    publisher-confirms: true #开启消息确认机制
     template:
       mandatory: true #保证监听有效
     listener:
@@ -25,9 +26,10 @@ spring:
           max-attempts: 5
           ####重试间隔次数
           initial-interval: 3000
-    publisher-confirm-type: correlated #会确认回调
+#    publisher-confirm-type: SIMPLE #会确认回调
+
   datasource:
-    url: jdbc:mysql://192.168.37.111:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.37.111:3306/message_center?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -51,13 +53,18 @@ dubbo:
   registry:
     address: zookeeper://192.168.37.111:2181
     protocol: zookeeper
+    timeout: 5000
+    simplified: true
   metadata-report:
     address: zookeeper://192.168.37.111:2181
+    timeout: 5000
   config-center:
     protocol: zookeeper
+    timeout: 5000
   protocol:
     name: dubbo
-    port: 20888
+    port: 20881
+
 
 server:
   port: 8081

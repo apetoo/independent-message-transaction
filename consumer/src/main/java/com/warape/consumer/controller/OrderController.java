@@ -31,7 +31,7 @@ public class OrderController {
         orderInfo.setPrice(price);
         orderInfo.setState(OrderConstants.OderStateEnum.NOT_PAYMENT.getState());
         if (orderInfo.insert()) {
-            return ResponseResult.builder().commonSuccess(CommonConstants.CommonResponseEnum.SUCCESS,null).build();
+            return ResponseResult.builder().commonSuccess(CommonConstants.CommonResponseEnum.SUCCESS,orderInfo).build();
         }else {
             return ResponseResult.builder().commonSuccess(CommonConstants.CommonResponseEnum.FAIL,null).build();
         }

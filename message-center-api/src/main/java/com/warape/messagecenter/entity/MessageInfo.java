@@ -42,6 +42,22 @@ public class MessageInfo extends Model<MessageInfo> {
      */
     private LocalDateTime updateTime;
 
+    /**
+     * 处理信息
+     */
+    private String handlerJson;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getHandlerJson() {
+        return handlerJson;
+    }
+
+    public void setHandlerJson(String handlerJson) {
+        this.handlerJson = handlerJson;
+    }
 
     public Integer getId() {
         return id;
@@ -91,11 +107,12 @@ public class MessageInfo extends Model<MessageInfo> {
     @Override
     public String toString() {
         return "MessageInfo{" +
-        "id=" + id +
-        ", messageId=" + messageId +
-        ", state=" + state +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        "}";
+                "id=" + id +
+                ", messageId='" + messageId + '\'' +
+                ", state=" + state +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", handlerJson='" + handlerJson + '\'' +
+                '}';
     }
 }

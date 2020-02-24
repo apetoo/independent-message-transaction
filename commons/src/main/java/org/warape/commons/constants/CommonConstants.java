@@ -25,10 +25,18 @@ public interface CommonConstants {
 
     }
 
+    /**
+     * 钩子
+     * @return
+     */
     default Integer getCode(){
         return null;
     }
 
+    /**
+     * 钩子
+     * @return
+     */
     default String getMsg(){
         return null;
     }
