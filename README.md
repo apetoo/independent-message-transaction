@@ -1,4 +1,5 @@
-# 项目说明
+# 项目说明 
+本项目是独立消息服务最终一致性得架构Demo
 
 ##  项目启动
 * 1.请将mysql  rabbitmq  zookeeper的 IP port 账号/密码 换成你自己的
