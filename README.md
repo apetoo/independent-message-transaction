@@ -4,6 +4,10 @@
 * 1.请将mysql  rabbitmq  zookeeper的 IP port 账号/密码 换成你自己的
 * 数据库表在wiki中 message_center.sql order.sql pay.sql
 
+## 接口
+* 创建订单接口: localhost:8082/createOrder?userId=1&price=2&productName=测试
+* 支付接口: localhost:8083/pay?orderId=10&payChannel=1&payPrice=2
+* 手动触发定时接口: localhost:8081/testSend
 ## 基于本地消息的最终一致性
 
 ![本地消息的最终一致性](wiki/1684370-c5a20749a59fc1a8.webp)
