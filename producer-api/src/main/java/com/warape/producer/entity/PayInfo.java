@@ -45,6 +45,16 @@ public class PayInfo extends Model<PayInfo> {
      */
     private Integer orderId;
 
+    private Integer payState;
+
+
+    public Integer getPayState() {
+        return payState;
+    }
+
+    public void setPayState(Integer payState) {
+        this.payState = payState;
+    }
 
     public Integer getId() {
         return id;
@@ -94,11 +104,12 @@ public class PayInfo extends Model<PayInfo> {
     @Override
     public String toString() {
         return "PayInfo{" +
-        "id=" + id +
-        ", payPrice=" + payPrice +
-        ", payChannel=" + payChannel +
-        ", createTime=" + createTime +
-        ", orderId=" + orderId +
-        "}";
+                "id=" + id +
+                ", payPrice=" + payPrice +
+                ", payChannel=" + payChannel +
+                ", createTime=" + createTime +
+                ", orderId=" + orderId +
+                ", payState=" + payState +
+                '}';
     }
 }

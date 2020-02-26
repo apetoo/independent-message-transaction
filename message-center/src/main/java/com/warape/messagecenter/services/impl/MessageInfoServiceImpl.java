@@ -1,5 +1,6 @@
 package com.warape.messagecenter.services.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -42,12 +43,17 @@ public class MessageInfoServiceImpl extends ServiceImpl<MessageInfoMapper, Messa
         LambdaUpdateWrapper<MessageInfo> updateWrapper = new LambdaUpdateWrapper<>();
 
         SendMessageResult<Object> data = responseResult.getData();
+        String json = JSON.toJSONString(data);
         if(CommonConstants.CommonResponseEnum.SUCCESS.getCode().equals(responseResult.getCode())){
             //成功 设置为待发送
-            updateWrapper.eq(MessageInfo::getMessageId, data.getUniqueId()).set(MessageInfo::getState, MessageConstants.MessageStateEnum.WAIT_SEND.getState());
+            updateWrapper.eq(MessageInfo::getMessageId, data.getUniqueId())
+                    .set(MessageInfo::getState, MessageConstants.MessageStateEnum.WAIT_SEND.getState())
+                    .set(MessageInfo::getHandlerJson,json);
         }else{
             //失败 设置为失败
-            updateWrapper.eq(MessageInfo::getMessageId, data.getUniqueId()).set(MessageInfo::getState, MessageConstants.MessageStateEnum.SEND_ERROR.getState());
+            updateWrapper.eq(MessageInfo::getMessageId, data.getUniqueId())
+                    .set(MessageInfo::getState, MessageConstants.MessageStateEnum.SEND_ERROR.getState())
+                    .set(MessageInfo::getHandlerJson, json);
         }
         //更新操作
         if (!update(updateWrapper)) {

@@ -43,7 +43,7 @@ public class OrderConsumerHandler {
 
         //修改
         LambdaUpdateWrapper<OrderInfo> updateWrapper = new LambdaUpdateWrapper<>();
-        updateWrapper.eq(OrderInfo::getId, result).set(OrderInfo::getState, OrderConstants.OderStateEnum.YES_PAYMENT.getState());
+        updateWrapper.eq(OrderInfo::getId, uniqueId).set(OrderInfo::getState, OrderConstants.OderStateEnum.YES_PAYMENT.getState());
         if (orderInfoService.update(updateWrapper)) {
             //成功
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);

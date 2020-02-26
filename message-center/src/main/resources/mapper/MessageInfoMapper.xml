@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.warape.center.mapper.MessageInfoMapper">
+<mapper namespace="com.warape.messagecenter.mapper.MessageInfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.warape.center.entity.MessageInfo">
+    <resultMap id="BaseResultMap" type="com.warape.messagecenter.entity.MessageInfo">
         <id column="id" property="id" />
         <result column="message_id" property="messageId" />
         <result column="state" property="state" />

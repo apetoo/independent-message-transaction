@@ -12,6 +12,8 @@ import org.warape.commons.constants.CommonConstants;
 import org.warape.commons.dto.SendMessageResult;
 import org.warape.commons.repsonse.ResponseResult;
 
+import java.math.BigDecimal;
+
 /**
  * @author wanmingyu
  */
@@ -28,7 +30,7 @@ public class PayController {
      * @return  ResponseResult
      */
     @RequestMapping("/pay")
-    public ResponseResult<Object> pay(Integer orderId,Integer payChannel){
+    public ResponseResult<Object> pay(Integer orderId, Integer payChannel, BigDecimal payPrice){
         ResponseResult.ResponseResultBuilder<Object> builder = ResponseResult.builder();
         //1.预发布消息
         ResponseResult<Object> messageResult = messageInfoService.beforehandMessage(orderId+"");
@@ -40,6 +42,7 @@ public class PayController {
         PayInfo payInfo = new PayInfo();
         payInfo.setOrderId(orderId);
         payInfo.setPayChannel(payChannel);
+        payInfo.setPayPrice(payPrice);
         //封装发送结果消息实体
         ResponseResult.ResponseResultBuilder<SendMessageResult<Object>> sendProcessResult = ResponseResult.builder();
         SendMessageResult<Object> sendMessageResult = new SendMessageResult<>();

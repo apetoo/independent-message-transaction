@@ -2,6 +2,7 @@ package com.warape.producer.services;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.warape.producer.entity.PayInfo;
+import org.warape.commons.repsonse.ResponseResult;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.warape.producer.entity.PayInfo;
  */
 public interface IPayInfoService extends IService<PayInfo> {
 
+    boolean confirmPayState(Integer orderId);
 }

@@ -1,7 +1,9 @@
 package org.warape.commons.dto;
 
 
-public class SendMessageResult<T> {
+import java.io.Serializable;
+
+public class SendMessageResult<T> implements Serializable {
 
     private String uniqueId;
     private T data;
