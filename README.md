@@ -11,7 +11,7 @@
 * 手动触发定时接口: localhost:8081/testSend
 ## 基于本地消息的最终一致性
 
-![本地消息的最终一致性](wiki/1684370-c5a20749a59fc1a8.jpg)
+![本地消息的最终一致性](https://github.com/warApePoint/independent-message-transaction/blob/master/wiki/1684370-c5a20749a59fc1a8.jpg)
 
 基于本地消息的最终一致性方案的最核心做法就是在执行业务操作的时候，记录一条消息数据到DB，
 并且消息数据的记录与业务数据的记录必须在同一个事务内完成，这是该方案的前提核心保障。在记录完成后消息数据后，
@@ -25,7 +25,7 @@
 
 ## 独立消息服务最终一致性
 
-![独立消息服务最终一致性](wiki/1684370-d36234ba75d83a95.jpg)
+![独立消息服务最终一致性](https://github.com/warApePoint/independent-message-transaction/blob/master/wiki/1684370-d36234ba75d83a95.jpg)
 
 独立消息服务最终一致性与本地消息服务最终一致性最大的差异就在于将消息的存储单独地做成了一个RPC的服务，
 这个过程其实就是模拟了事务消息的消息预发送过程，如果预发送消息失败，那么生产者业务就不会去执行，
