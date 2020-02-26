@@ -1,6 +1,8 @@
 # 项目说明
 
 ##  项目启动
+* 1.请将mysql  rabbitmq  zookeeper的 IP port 账号/密码 换成你自己的
+* 数据库表在wiki中 message_center.sql order.sql pay.sql
 
 ## 基于本地消息的最终一致性
 
