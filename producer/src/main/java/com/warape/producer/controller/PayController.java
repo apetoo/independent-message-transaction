@@ -5,6 +5,7 @@ import cn.hutool.core.util.IdUtil;
 import com.alibaba.fastjson.JSON;
 import com.warape.messagecenter.services.IMessageInfoService;
 import com.warape.producer.entity.PayInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ import java.math.BigDecimal;
  * @author wanmingyu
  */
 @RestController
+@Slf4j
 public class PayController {
 
     @Reference
@@ -37,6 +39,7 @@ public class PayController {
         if(!messageResult.getCode().equals(CommonConstants.CommonResponseEnum.SUCCESS.getCode())){
             return builder.commonFail(CommonConstants.CommonResponseEnum.FAIL).build();
         }
+        log.info("预发送消息结果为:{}",messageResult);
 
         //2.处理业务逻辑
         PayInfo payInfo = new PayInfo();
@@ -52,9 +55,11 @@ public class PayController {
         sendMessageResult.setData(payInfo);
         if (payInfo.insert()) {
             //处理成功
+            log.info("支付系统处理[成功]订单ID:{} 支付信息:{} ",orderId,JSON.toJSONString(payInfo));
             sendProcessResult = sendProcessResult.commonSuccess(CommonConstants.CommonResponseEnum.SUCCESS,sendMessageResult);
         }else {
             //处理失败
+            log.info("支付系统处理[失败]订单ID:{} 支付信息:{} ",orderId,JSON.toJSONString(payInfo));
             sendProcessResult = sendProcessResult.commonFail(CommonConstants.CommonResponseEnum.SUCCESS,sendMessageResult);
         }
         //3.发送消息处理结果

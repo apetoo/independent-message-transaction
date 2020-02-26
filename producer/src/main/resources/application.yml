@@ -24,6 +24,7 @@ dubbo:
     address: zookeeper://192.168.37.111:2181
     protocol: zookeeper
     simplified: true
+    check: false
   metadata-report:
     address: zookeeper://192.168.37.111:2181
   config-center:
@@ -31,7 +32,8 @@ dubbo:
   protocol:
     name: dubbo
     port: 20882
-
+  consumer:
+    check: false
 server:
   port: 8083
 

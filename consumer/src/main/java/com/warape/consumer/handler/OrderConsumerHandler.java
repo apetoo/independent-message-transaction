@@ -30,6 +30,7 @@ public class OrderConsumerHandler {
     @RabbitListener(queues = RabbitConstants.ORDER_QUEUE_NAME)
     public void orderState(Message message, Channel channel) throws IOException {
         String result = new String(message.getBody());
+        log.info("消息结果为:{}", result);
         SendMessageResult sendMessageResult = JSON.parseObject(result, SendMessageResult.class);
         //订单ID
         String uniqueId = sendMessageResult.getUniqueId();
@@ -37,6 +38,7 @@ public class OrderConsumerHandler {
         OrderInfo byId = orderInfoService.getById(uniqueId);
         if (Objects.isNull(byId)) {
             //如果为空  说明无此订单 丢弃返回
+            log.info("无此:{} 订单ID", uniqueId);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             return;
         }
@@ -46,9 +48,11 @@ public class OrderConsumerHandler {
         updateWrapper.eq(OrderInfo::getId, uniqueId).set(OrderInfo::getState, OrderConstants.OderStateEnum.YES_PAYMENT.getState());
         if (orderInfoService.update(updateWrapper)) {
             //成功
+            log.info("修改订单状态为已付款成功 订单ID:{}", uniqueId);
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
         } else {
             //失败
+            log.info("修改订单状态为已付款失败 订单ID:{}", uniqueId);
             channel.basicReject(message.getMessageProperties().getDeliveryTag(), false);
         }
 

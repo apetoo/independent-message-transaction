@@ -55,6 +55,7 @@ dubbo:
     protocol: zookeeper
     timeout: 5000
     simplified: true
+    check: false
   metadata-report:
     address: zookeeper://192.168.37.111:2181
     timeout: 5000
@@ -64,6 +65,8 @@ dubbo:
   protocol:
     name: dubbo
     port: 20881
+  consumer:
+    check: false
 
 
 server:

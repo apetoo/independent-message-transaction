@@ -1,5 +1,6 @@
 package org.warape.commons.repsonse;
 
+import lombok.ToString;
 import org.warape.commons.constants.CommonConstants;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @author: 万明宇 (warApe)
  * @create: 2019-06-19 13:17
  **/
+@ToString
 public class ResponseResult<T> implements Serializable {
     private static final long serialVersionUID = -1;
     private Integer code;

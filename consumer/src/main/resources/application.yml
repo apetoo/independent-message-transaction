@@ -29,7 +29,7 @@ spring:
     connection-timeout:
 
   datasource:
-    url: jdbc:mysql://192.168.37.111:3306/order?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://mysqlhost:3306/order?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -63,6 +63,8 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880
+  consumer:
+    check: false
 logging:
   level:
     com.warape.consumer.mapper: debug

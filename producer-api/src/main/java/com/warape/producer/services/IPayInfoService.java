@@ -14,5 +14,10 @@ import org.warape.commons.repsonse.ResponseResult;
  */
 public interface IPayInfoService extends IService<PayInfo> {
 
+    /**
+     * 支付系统业务处理状态确认
+     * @param orderId
+     * @return
+     */
     boolean confirmPayState(Integer orderId);
 }

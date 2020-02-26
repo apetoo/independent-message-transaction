@@ -8,6 +8,7 @@ import com.warape.messagecenter.entity.MessageInfo;
 import com.warape.messagecenter.mapper.MessageInfoMapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.warape.messagecenter.services.IMessageInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.warape.commons.constants.CommonConstants;
@@ -24,6 +25,7 @@ import org.warape.commons.repsonse.ResponseResult;
  * @since 2020-02-21
  */
 @Service
+@Slf4j
 public class MessageInfoServiceImpl extends ServiceImpl<MessageInfoMapper, MessageInfo> implements IMessageInfoService {
 
     @Override
@@ -58,6 +60,11 @@ public class MessageInfoServiceImpl extends ServiceImpl<MessageInfoMapper, Messa
         //更新操作
         if (!update(updateWrapper)) {
             //TODO 更新失败  加入定时器扫描或者人工处理
+            log.info("业务处理成功结果消息设置状态【异常】");
+        }else {
+            //成功
+            log.info("业务处理成功结果消息设置状态为【待发送】");
         }
+
     }
 }

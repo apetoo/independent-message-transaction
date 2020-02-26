@@ -6,6 +6,7 @@ import com.warape.messagecenter.message.OrderSenderProcess;
 import com.warape.messagecenter.services.IMessageInfoService;
 import com.warape.messagecenter.utils.RabbitUtil;
 import com.warape.producer.services.IPayInfoService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,7 +26,7 @@ public class MessageTask {
     private IMessageInfoService messageInfoService;
     @Autowired
     private OrderSenderProcess orderSenderProcess;
-    @Autowired
+    @Reference
     private IPayInfoService payInfoService;
 
     /**
